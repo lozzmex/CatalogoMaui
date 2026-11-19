@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:CatalogoMaui.Models"
+    x:Class="CatalogoMaui.Views.ProductoDetallePage"
+    x:DataType="models:Producto"
+    Title="Detalle del producto">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+
+            <Image Source="{Binding Foto}"
+                   HeightRequest="230"
+                   Aspect="AspectFit" />
+
+            <Label Text="{Binding Nombre}"
+                   FontSize="26"
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding Precio, StringFormat='MX$ {0:F2}'}"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding Detalle}"
+                   FontSize="16" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

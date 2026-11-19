@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:models="clr-namespace:CatalogoMaui.Models"
+xmlns:vm="clr-namespace:CatalogoMaui.ViewModels"
+x:Class="CatalogoMaui.MainPage"
+x:DataType="vm:CatalogoViewModel"
+Title="Catálogo">
+    <Grid Padding="16" RowDefinitions="Auto,*" RowSpacing="12">
+        <Label Text="Catálogo de Videojuegos"
+FontSize="24" FontAttributes="Bold" />
+        <CollectionView Grid.Row="1"
+                ItemsSource="{Binding Productos}"
+                SelectionMode="Single"
+                SelectionChanged="AlSeleccionarProducto">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+ItemSpacing="12" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <!-- El contexto de cada tarjeta es un Producto. -->
+                <DataTemplate x:DataType="models:Producto">
+                    <Border Stroke="#878787" StrokeThickness="1"
+StrokeShape="RoundRectangle 14"
+Padding="12">
+                        <VerticalStackLayout Spacing="6">
+                            <Image Source="{Binding Foto}"
+HeightRequest="145"
+Aspect="AspectFill"
+SemanticProperties.Description="{Binding Nombre}" />
+
+                            <Label Text="{Binding Nombre}"
+FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding Descripcion}"
+LineBreakMode="WordWrap" />
+                            <Label Text="{Binding Precio,
+StringFormat='MX$ {0:F2}'}"
+FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
